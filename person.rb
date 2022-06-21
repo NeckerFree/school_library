@@ -6,28 +6,28 @@ class Person
     @parent_permission = parent_permission
   end
 
-  def id
+  def _id
     @id
   end
 
-  def name
+  def _name
     @name
   end
 
-  def age
+  def _age
     @age
   end
 
-  def name=(name)
+  def put_name=(name)
     @name = name
   end
 
-  def age=(age)
+  def put_age=(age)
     @age = age
   end
 
   def can_use_services?
-    if is_of_age? && @parent_permission
+    if of_age? && @parent_permission
       true
     else
       false
@@ -36,29 +36,25 @@ class Person
 
   private
 
-  def is_of_age?
-    if @age >= 18
-      true
-    else
-      false
-    end
+  def of_age?
+    @age >= 18
   end
 end
 
 person1 = Person.new(53, 'Elio')
-puts(person1.id)
-puts(person1.name)
-puts(person1.age)
+puts(person1._id)
+puts(person1._name)
+puts(person1._age)
 puts(person1.can_use_services?)
 
 person2 = Person.new(10, 'Sebastian')
-puts(person2.id)
-puts(person2.name)
-puts(person2.age)
+puts(person2._id)
+puts(person2._name)
+puts(person2._age)
 puts(person2.can_use_services?)
 
 person3 = Person.new(47, '')
-puts(person3.id)
-puts(person3.name)
-puts(person3.age)
+puts(person3._id)
+puts(person3._name)
+puts(person3._age)
 puts(person3.can_use_services?)
