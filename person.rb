@@ -50,6 +50,7 @@ class Person < Nameable
   end
 end
 
+# Check if you managed to decorate your person
 person = Person.new(22, 'maximilianus')
 puts(person.correct_name)
 capitalized_person = CapitalizeDecorator.new(person)
