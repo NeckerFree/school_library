@@ -17,7 +17,7 @@ Clone the repo using the command:
 > code .
 
   Change to the required branch:
-> git checkout decorate-class   
+> git checkout setup-associations   
 
 ### Setup
 
@@ -27,8 +27,8 @@ Clone the repo using the command:
 If neccesary run npm install:
 > npm i
 Install the extension Code Runner
-Open the person.rb class
-Run the code runner to check decorate person
+Open the test.rb class
+Run the code runner to check set up associations
 
 ## Authors
 
