@@ -31,7 +31,7 @@ class Main
         app.create_rental(date, book_id, person_id)
       when 6
         puts('Enter person id: ')
-        person_id = gets.chomp.to_i
+        person_id = gets.chomp
         app.list_all_rentals(person_id)
       when 7
         exit
