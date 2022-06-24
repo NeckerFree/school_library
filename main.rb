@@ -1,20 +1,10 @@
 require './app'
 
-class Main # rubocop:disable Metrics/CyclomaticComplexity
-  def main
+class Main
+  def main # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     app = App.new
-    loop do
-      puts("Welcome to School Library App!
-
-            Please choose an option by entering a number:
-            1. List all books.
-            2. List all people.
-            3. Create a person (teacher or student).
-            4. Create a book.
-            5. Create a rental.
-            6. List all rentals for a given person id.
-            7. Exit")
-      puts('option: ')
+    loop do # rubocop:disable Metrics/BlockLength
+      show_menu
       option = gets.chomp.to_i
       system('cls')
 
@@ -50,21 +40,12 @@ class Main # rubocop:disable Metrics/CyclomaticComplexity
     end
   end
 
-  def create_person(app) # rubocop:disable Metrics/CyclomaticComplexity
+  def create_person(app)
     puts('Do you want to create a student (1) or a teacher (2)? [Input the number]: ')
     person_type = gets.chomp.to_i
     case person_type
     when 1
-      puts('Enter age: ')
-      age = gets.chomp
-      puts('Enter name: ')
-      name = gets.chomp
-      puts('Enter classroom: ')
-      classroom = gets.chomp
-      puts('Has parent permission? [Y/N]: ')
-      response = gets.chomp
-      permission = response.downcase == 'y'
-      app.create_student(age, classroom, name, permission)
+      create_student(app)
     when 2
       puts('Enter age: ')
       age = gets.chomp
@@ -76,6 +57,33 @@ class Main # rubocop:disable Metrics/CyclomaticComplexity
     else
       puts('person option not valid')
     end
+  end
+
+  def create_student(app)
+    puts('Enter age: ')
+    age = gets.chomp
+    puts('Enter name: ')
+    name = gets.chomp
+    puts('Enter classroom: ')
+    classroom = gets.chomp
+    puts('Has parent permission? [Y/N]: ')
+    response = gets.chomp
+    permission = response.downcase == 'y'
+    app.create_student(age, classroom, name, permission)
+  end
+
+  def show_menu
+    puts("Welcome to School Library App!
+
+            Please choose an option by entering a number:
+            1. List all books.
+            2. List all people.
+            3. Create a person (teacher or student).
+            4. Create a book.
+            5. Create a rental.
+            6. List all rentals for a given person id.
+            7. Exit")
+    puts('option: ')
   end
 end
 
