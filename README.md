@@ -17,7 +17,7 @@ Clone the repo using the command:
 > code .
 
   Change to the required branch:
-> git checkout setup-associations   
+> git checkout user-input   
 
 ### Setup
 
@@ -26,10 +26,12 @@ Clone the repo using the command:
 ### Usage
 If neccesary run npm install:
 > npm i
-Install the extension Code Runner
-Open the test.rb class
-Run the code runner to check set up associations
 
+Open a terminal and run the next command:
+
+> ruby main.rb
+
+and you can get the menu to execute the School Library App
 ## Authors
 
 👤 **Elio Cortés**
