@@ -45,7 +45,7 @@ class App
   end
 
   def create_book(title, author)
-    book = Book.new(title, author, title)
+    book = Book.new(title, author)
     @books << book
     puts("Created book id: #{book.id} title: #{book.title} author: #{book.author}")
   end
