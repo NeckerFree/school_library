@@ -14,62 +14,18 @@ class Main
       when 2
         app.list_all_people
       when 3
-        create_person(app)
+        app.create_person
       when 4
-        puts('Enter title: ')
-        title = gets.chomp
-        puts('Enter author: ')
-        author = gets.chomp
-        app.create_book(title, author)
+        app.create_book
       when 5
-        puts('Enter date (YYYY-MM-DD): ')
-        date = gets.chomp
-        puts('Enter book id: ')
-        book_id = gets.chomp.to_i
-        puts('Enter person id: ')
-        person_id = gets.chomp.to_i
-        app.create_rental(date, book_id, person_id)
+        app.create_rental
       when 6
-        puts('Enter person id: ')
-        person_id = gets.chomp.to_i
-        app.list_all_rentals(person_id)
+        app.list_all_rentals
       when 7
         exit
       end
       puts("\n")
     end
-  end
-
-  def create_person(app)
-    puts('Do you want to create a student (1) or a teacher (2)? [Input the number]: ')
-    person_type = gets.chomp.to_i
-    case person_type
-    when 1
-      create_student(app)
-    when 2
-      puts('Enter age: ')
-      age = gets.chomp
-      puts('Enter specialization: ')
-      specialization = gets.chomp
-      puts('Enter name: ')
-      name = gets.chomp
-      app.create_teacher(age, specialization, name)
-    else
-      puts('person option not valid')
-    end
-  end
-
-  def create_student(app)
-    puts('Enter age: ')
-    age = gets.chomp
-    puts('Enter name: ')
-    name = gets.chomp
-    puts('Enter classroom: ')
-    classroom = gets.chomp
-    puts('Has parent permission? [Y/N]: ')
-    response = gets.chomp
-    permission = response.downcase == 'y'
-    app.create_student(age, classroom, name, permission)
   end
 
   def show_menu

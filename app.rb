@@ -6,7 +6,7 @@ require './teacher'
 require './student'
 
 class App
-  attr_accessor :people, :books, :rentals
+  # attr_accessor :people, :books, :rentals
 
   def initialize
     @people = []
@@ -32,25 +32,63 @@ class App
     end
   end
 
-  def create_student(age, classroom, name, permission)
+  def create_person
+    puts('Do you want to create a student (1) or a teacher (2)? [Input the number]: ')
+    person_type = gets.chomp.to_i
+    case person_type
+    when 1
+      create_student
+    when 2
+      create_teacher
+    else
+      puts('person option not valid')
+    end
+  end
+  
+  def create_student
+    puts('Enter age: ')
+    age = gets.chomp
+    puts('Enter name: ')
+    name = gets.chomp
+    puts('Enter classroom: ')
+    classroom = gets.chomp
+    puts('Has parent permission? [Y/N]: ')
+    response = gets.chomp
+    permission = response.downcase == 'y'
     student = Student.new(age, classroom, name, parent_permission: permission)
     puts("Created student id: #{student._id} name: #{student._name}")
     @people << student
   end
 
-  def create_teacher(age, specialization, name)
+  def create_teacher
+    puts('Enter age: ')
+      age = gets.chomp
+      puts('Enter specialization: ')
+      specialization = gets.chomp
+      puts('Enter name: ')
+      name = gets.chomp
     teacher = Teacher.new(age, specialization, name)
     @people << teacher
     puts("Created teacher id: #{teacher._id} name: #{teacher._name}")
   end
 
-  def create_book(title, author)
+  def create_book
+    puts('Enter title: ')
+        title = gets.chomp
+        puts('Enter author: ')
+        author = gets.chomp
     book = Book.new(title, author)
     @books << book
     puts("Created book id: #{book.id} title: #{book.title} author: #{book.author}")
   end
 
-  def create_rental(date, book_id, person_id)
+  def create_rental
+    puts('Enter date (YYYY-MM-DD): ')
+        date = gets.chomp
+        puts('Enter book id: ')
+        book_id = gets.chomp.to_i
+        puts('Enter person id: ')
+        person_id = gets.chomp.to_i
     book = @books.find { |b| b._id == book_id }
     if book.nil?
       puts("book with id: #{book_id} doesn't exist")
@@ -70,7 +108,9 @@ class App
     puts("Created rental book ( title: #{book.title}  author: #{book.author}) person: #{person._name}")
   end
 
-  def list_all_rentals(person_id)
+  def list_all_rentals
+    puts('Enter person id: ')
+    person_id = gets.chomp.to_i
     person = @people.find { |p| p._id == person_id }
     if person.nil?
       puts("No rentals found. \n")
