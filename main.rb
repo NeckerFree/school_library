@@ -3,7 +3,7 @@ require './app'
 class Main
   def main # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength
     app = App.new
-    loop do # rubocop:disable Metrics/BlockLength
+    loop do
       show_menu
       option = gets.chomp.to_i
       system('cls')

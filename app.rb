@@ -44,7 +44,7 @@ class App
       puts('person option not valid')
     end
   end
-  
+
   def create_student
     puts('Enter age: ')
     age = gets.chomp
@@ -62,11 +62,11 @@ class App
 
   def create_teacher
     puts('Enter age: ')
-      age = gets.chomp
-      puts('Enter specialization: ')
-      specialization = gets.chomp
-      puts('Enter name: ')
-      name = gets.chomp
+    age = gets.chomp
+    puts('Enter specialization: ')
+    specialization = gets.chomp
+    puts('Enter name: ')
+    name = gets.chomp
     teacher = Teacher.new(age, specialization, name)
     @people << teacher
     puts("Created teacher id: #{teacher._id} name: #{teacher._name}")
@@ -74,21 +74,21 @@ class App
 
   def create_book
     puts('Enter title: ')
-        title = gets.chomp
-        puts('Enter author: ')
-        author = gets.chomp
+    title = gets.chomp
+    puts('Enter author: ')
+    author = gets.chomp
     book = Book.new(title, author)
     @books << book
     puts("Created book id: #{book.id} title: #{book.title} author: #{book.author}")
   end
 
-  def create_rental
+  def create_rental # rubocop:disable  Metrics/MethodLength
     puts('Enter date (YYYY-MM-DD): ')
-        date = gets.chomp
-        puts('Enter book id: ')
-        book_id = gets.chomp.to_i
-        puts('Enter person id: ')
-        person_id = gets.chomp.to_i
+    date = gets.chomp
+    puts('Enter book id: ')
+    book_id = gets.chomp.to_i
+    puts('Enter person id: ')
+    person_id = gets.chomp.to_i
     book = @books.find { |b| b._id == book_id }
     if book.nil?
       puts("book with id: #{book_id} doesn't exist")
