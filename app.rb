@@ -46,6 +46,13 @@ class App
   end
 
   def create_student
+    parameters = student_input
+    student = Student.new(parameters[0], parameters[1], parameters[2], parent_permission: parameters[3])
+    puts("Created student id: #{student._id} name: #{student._name}")
+    @people << student
+  end
+
+  def student_input
     puts('Enter age: ')
     age = gets.chomp
     puts('Enter name: ')
@@ -54,10 +61,8 @@ class App
     classroom = gets.chomp
     puts('Has parent permission? [Y/N]: ')
     response = gets.chomp
-    permission = response.downcase == 'y'
-    student = Student.new(age, classroom, name, parent_permission: permission)
-    puts("Created student id: #{student._id} name: #{student._name}")
-    @people << student
+    permission = response.downcase == 'y' 
+    [age, classroom,name, permission]
   end
 
   def create_teacher
