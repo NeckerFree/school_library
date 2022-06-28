@@ -98,6 +98,14 @@ class App
   end
 
   def create_rental # rubocop:disable  Metrics/MethodLength
+    parameters = rental_input
+    if parameters.empty? return
+    rental = Rental.new(date, book, person)
+    @rentals << rental
+    puts("Created rental book ( title: #{book.title}  author: #{book.author}) person: #{person._name}")
+  end
+
+  def rental_input
     puts('Enter date (YYYY-MM-DD): ')
     date = gets.chomp
     puts('Enter book id: ')
@@ -118,9 +126,7 @@ class App
     else
       puts("id: #{person._id} name: #{person._name} age: #{person._age}")
     end
-    rental = Rental.new(date, book, person)
-    @rentals << rental
-    puts("Created rental book ( title: #{book.title}  author: #{book.author}) person: #{person._name}")
+    [date, book, person]
   end
 
   def list_all_rentals
