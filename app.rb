@@ -81,15 +81,20 @@ class App
     name = gets.chomp
     [age, specialization, name]
   end
-  
+
   def create_book
+    parameters = book_input
+    book = Book.new(parameters[0], parameters[1])
+    @books << book
+    puts("Created book id: #{book.id} title: #{book.title} author: #{book.author}")
+  end
+
+  def book_input
     puts('Enter title: ')
     title = gets.chomp
     puts('Enter author: ')
     author = gets.chomp
-    book = Book.new(title, author)
-    @books << book
-    puts("Created book id: #{book.id} title: #{book.title} author: #{book.author}")
+    [title, author]
   end
 
   def create_rental # rubocop:disable  Metrics/MethodLength
