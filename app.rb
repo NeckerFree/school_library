@@ -6,7 +6,6 @@ require './teacher'
 require './student'
 
 class App
-
   def initialize
     @people = []
     @books = []
