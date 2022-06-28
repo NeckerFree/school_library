@@ -66,17 +66,22 @@ class App
   end
 
   def create_teacher
+    parameters = teacher_input
+    teacher = Teacher.new(parameters[0], parameters[1], parameters[2])
+    @people << teacher
+    puts("Created teacher id: #{teacher._id} name: #{teacher._name}")
+  end
+
+  def teacher_input
     puts('Enter age: ')
     age = gets.chomp
     puts('Enter specialization: ')
     specialization = gets.chomp
     puts('Enter name: ')
     name = gets.chomp
-    teacher = Teacher.new(age, specialization, name)
-    @people << teacher
-    puts("Created teacher id: #{teacher._id} name: #{teacher._name}")
+    [age, specialization, name]
   end
-
+  
   def create_book
     puts('Enter title: ')
     title = gets.chomp
