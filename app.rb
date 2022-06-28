@@ -61,8 +61,8 @@ class App
     classroom = gets.chomp
     puts('Has parent permission? [Y/N]: ')
     response = gets.chomp
-    permission = response.downcase == 'y' 
-    [age, classroom,name, permission]
+    permission = response.downcase == 'y'
+    [age, classroom, name, permission]
   end
 
   def create_teacher
@@ -97,16 +97,14 @@ class App
     [title, author]
   end
 
-  def create_rental # rubocop:disable  Metrics/MethodLength
+  def create_rental
     parameters = rental_input
-    # if parameters.empty? return
-    # end
     rental = Rental.new(parameters[0], parameters[1], parameters[2])
     @rentals << rental
-    puts("Created rental book ( title: #{parameters[1].title}  author: #{parameters[1].author}) person: #{parameters[2]._name}")
+    puts("Created rental book ( title: #{parameters[1].title}  author: #{parameters[1].author}) person: #{parameters[2]._name}") # rubocop:disable Layout/LineLength
   end
 
-  def rental_input
+  def rental_input # rubocop:disable  Metrics/MethodLength
     puts('Enter date (YYYY-MM-DD): ')
     date = gets.chomp
     puts('Enter book id: ')
