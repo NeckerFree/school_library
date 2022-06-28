@@ -100,7 +100,7 @@ class App
   def create_rental # rubocop:disable  Metrics/MethodLength
     parameters = rental_input
     if parameters.empty? return
-    rental = Rental.new(date, book, person)
+    rental = Rental.new(parameters[0], parameters[1], parameters[2])
     @rentals << rental
     puts("Created rental book ( title: #{book.title}  author: #{book.author}) person: #{person._name}")
   end
