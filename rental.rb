@@ -16,8 +16,8 @@ class Rental
   end
 
   def json_string
-    "{\"date\": \"#{date}\", \"person_id\": #{person._id}, \"name\": "+
-    "\"#{person._name}\", \"book_id\": #{book.id}, \"book_title\": "+
-    "\"#{book.title}\", \"book_author\": \"#{book.author}\"}"
+    "{\"date\": \"#{date}\", \"person_id\": #{person._id}, \"name\": " \
+      "\"#{person._name}\", \"book_id\": #{book.id}, \"book_title\": " \
+      "\"#{book.title}\", \"book_author\": \"#{book.author}\"}"
   end
 end

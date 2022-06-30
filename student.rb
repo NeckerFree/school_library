@@ -14,8 +14,8 @@ class Student < Person
   end
 
   def json_string
-    "{\"id\": #{_id}, \"age\": #{_age}, \"classroom\": \"#{classroom}\", " +
-    "\"name\": \"#{_name}\", \"parent_permission\": \"#{_parent_permission}\"}"
+    "{\"id\": #{_id}, \"age\": #{_age}, \"classroom\": \"#{classroom}\", " \
+      "\"name\": \"#{_name}\", \"parent_permission\": \"#{_parent_permission}\"}"
   end
 
   def play_hooky
