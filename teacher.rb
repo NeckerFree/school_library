@@ -1,15 +1,20 @@
 require './person'
 class Teacher < Person
+  attr_reader :specialization
+
   def initialize(age, specialization, name)
-    super(age, name)
+    super(0, age, name)
     @specialization = specialization
   end
 
   def can_use_services?
     true
   end
-end
 
+  def json_string
+    "{\"id\": #{_id}, \"age\": #{_age}, \"specialization\": \"#{specialization}\", \"name\": \"#{_name}\"}"
+  end
+end
 # teacher_a = Teacher.new(33, 'Math', 'Andrew')
 # puts(teacher_a._id)
 # puts(teacher_a._name)

@@ -5,8 +5,8 @@ require './trimmer_decorator'
 class Person < Nameable
   attr_reader :rentals
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
-    @id = Random.rand(1..1000)
+  def initialize(id, age, name = 'Unknown', parent_permission: true)
+    @id = id.zero? ? Random.rand(1..1000) : id
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -33,6 +33,10 @@ class Person < Nameable
 
   def _age
     @age
+  end
+
+  def _parent_permission
+    @parent_permission
   end
 
   def put_name=(name)
